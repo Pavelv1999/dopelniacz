@@ -3,264 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Родительный падеж</title>
+    <title>Родительный падеж (Dopełniacz) в польском языке</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
         }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        table {
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .section h3 {
+            color: #495057;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+        
+        .endings-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #3498db;
+        
+        .endings-table th {
+            background: #667eea;
             color: white;
-            font-weight: bold;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
         }
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
+        
+        .endings-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
         }
-        .section {
-            background: white;
+        
+        .endings-table tr:hover {
+            background: #f1f3f4;
+        }
+        
+        .example {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+        
+        .rule-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
+        }
+        
+        .rule-box strong {
+            color: #856404;
+        }
+        
+        .functions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .functions-list li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
             border-radius: 8px;
+            border-left: 4px solid #28a745;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .examples {
-            background: #e8f5e9;
-            padding: 15px;
-            border-left: 4px solid #4caf50;
-            margin: 10px 0;
+        
+        .functions-list li strong {
+            color: #28a745;
         }
-        .negative-examples {
-            background: #ffebee;
-            padding: 15px;
-            border-left: 4px solid #f44336;
-            margin: 10px 0;
+        
+        .negative-positive {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
         }
-        ul {
-            line-height: 1.8;
+        
+        .positive {
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #28a745;
         }
-        .rule {
+        
+        .negative {
+            background: #f8d7da;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .u-ending, .a-ending {
+            background: white;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .u-ending {
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .a-ending {
+            border-left: 5px solid #fd7e14;
+        }
+        
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .category-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight {
             background: #fff3cd;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
         }
-        footer {
-            margin-top: 50px;
-            padding: 20px 0;
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
             text-align: center;
-            border-top: 2px solid #e0e0e0;
-            color: #666;
-            font-style: italic;
+            color: #6c757d;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .negative-positive {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>📚 Что такое родительный падеж?</h1>
-    
-    <div class="section">
-        <p><strong>Родительный падеж (dopełniacz)</strong> — это «грустный брат» винительного падежа. Если винительный падеж используется с позитивными глаголами (kocham, lubię, mam), то родительный падеж появляется при отрицании этих же глаголов.</p>
-        
-        <div class="examples">
-            <strong>✅ Винительный падеж (позитивные глаголы)</strong>
-            <ul>
-                <li>Kocham przystojnego chłopaka</li>
-                <li>Lubię czerwone wino</li>
-                <li>Mam nowy komputer</li>
-            </ul>
+    <div class="container">
+        <div class="header">
+            <h1>Родительный падеж</h1>
+            <p>Dopełniacz в польском языке</p>
         </div>
         
-        <div class="negative-examples">
-            <strong>❌ Родительный падеж (отрицание)</strong>
-            <ul>
-                <li>Nie kocham przystojnego chłopaka</li>
-                <li>Nie lubię czerwonego wina</li>
-                <li>Nie mam nowego komputera</li>
-            </ul>
+        <div class="content">
+            <!-- Введение -->
+            <div class="section">
+                <h2>📚 Что такое родительный падеж?</h2>
+                <p>Родительный падеж (dopełniacz) — это «грустный брат» винительного падежа. Если винительный падеж используется с позитивными глаголами (kocham, lubię, mam), то родительный падеж появляется при отрицании этих же глаголов.</p>
+                
+                <div class="negative-positive">
+                    <div class="positive">
+                        <h3>✅ Винительный падеж (позитивные глаголы)</h3>
+                        <ul>
+                            <li>Kocham przystojnego chłopaka</li>
+                            <li>Lubię czerwone wino</li>
+                            <li>Mam nowy komputer</li>
+                        </ul>
+                    </div>
+                    <div class="negative">
+                        <h3>❌ Родительный падеж (отрицание)</h3>
+                        <ul>
+                            <li>Nie kocham przystojnego chłopaka</li>
+                            <li>Nie lubię czerwonego wina</li>
+                            <li>Nie mam nowego komputera</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Окончания -->
+            <div class="section">
+                <h2>📝 Окончания в родительном падеже</h2>
+                
+                <table class="endings-table">
+                    <thead>
+                        <tr>
+                            <th>Род</th>
+                            <th>Прилагательное</th>
+                            <th>Существительное</th>
+                            <th>Примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Мужской род (одушевленный)</strong></td>
+                            <td>-ego</td>
+                            <td>-a</td>
+                            <td>Nie kocham młodego chłopaka</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Мужской род (неодушевленный)</strong></td>
+                            <td>-ego</td>
+                            <td>-a / -u</td>
+                            <td>Nie mam nowego komputera / samochodu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Средний род</strong></td>
+                            <td>-ego</td>
+                            <td>-a</td>
+                            <td>Nie piję czerwonego wina</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Женский род</strong></td>
+                            <td>-ej</td>
+                            <td>-y / -i</td>
+                            <td>Nie znam brutalnej lekarki / nauczycielki</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="rule-box">
+                    <strong>Правило для женского рода:</strong> После букв k, g, j, l используется окончание -i, после остальных букв -y.
+                </div>
+            </div>
+
+            <!-- Окончания -a и -u -->
+            <div class="section">
+                <h2>🔄 Когда -a, а когда -u?</h2>
+                
+                <div class="u-ending">
+                    <h3>Окончание -u используется с:</h3>
+                    <ul class="category-list">
+                        <li><strong>Транспорт:</strong> samochodu, roweru, samolotu</li>
+                        <li><strong>Абстракции:</strong> czasu, pomysłu</li>
+                        <li><strong>Собирательные существительные:</strong> ryżu, makaronu</li>
+                        <li><strong>Места с группами объектов:</strong> parku, lasu</li>
+                        <li><strong>Жидкости:</strong> majonezu, keczupu, żurku</li>
+                        <li><strong>Дни недели (мужского рода):</strong> poniedziałku, wtorku, piątku, czwartku</li>
+                    </ul>
+                </div>
+
+                <div class="a-ending">
+                    <h3>Окончание -a используется с:</h3>
+                    <ul class="category-list">
+                        <li><strong>Месяцы:</strong> stycznia, września, maja</li>
+                        <li><strong>Спорт и танцы:</strong> tenisa, brydża, golfa, walca</li>
+                        <li><strong>Фрукты и овощи:</strong> ogórka, banana, pomidora</li>
+                        <li><strong>Кухонная утварь:</strong> noża, widelca, kubka, garnka</li>
+                        <li><strong>Валюта:</strong> funta, dolara, jena</li>
+                        <li><strong>Марки автомобилей:</strong> golfa, mercedesa, citroena</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Функции родительного падежа -->
+            <div class="section">
+                <h2>⚙️ Функции родительного падежа</h2>
+                
+                <ul class="functions-list">
+                    <li>
+                        <strong>1. Отрицание</strong><br>
+                        Nie kocham, nie lubię, nie mam, nie znam
+                        <div class="example">Nie lubię zimnego mleka</div>
+                    </li>
+                    
+                    <li>
+                        <strong>2. Скрытое отрицание</strong><br>
+                        szukam (ищу, потому что не имею), boję się (боюсь чего-то плохого), życzę (желаю то, чего у тебя нет)
+                        <div class="example">Szukam książki, Boję się psa, Życzę ci szczęścia</div>
+                    </li>
+                    
+                    <li>
+                        <strong>3. Принадлежность</strong><br>
+                        Когда что-то кому-то принадлежит
+                        <div class="example">To jest marker Ani, To jest tablica nauczycielki</div>
+                    </li>
+                    
+                    <li>
+                        <strong>4. Даты</strong><br>
+                        Конкретные даты
+                        <div class="example">Urodziłam się drugiego października, Mamy szóstego czerwca</div>
+                    </li>
+                    
+                    <li>
+                        <strong>5. Количество</strong><br>
+                        С числительными от 5 до 21, со словами mało, trochę, dużo
+                        <div class="example">Mam pięć lat, Mam mało cukru, Mam dużo wody</div>
+                    </li>
+                    
+                    <li>
+                        <strong>6. Части целого</strong><br>
+                        kawałek, część, połowa + родительный падеж
+                        <div class="example">Poproszę kawałek pizzy</div>
+                    </li>
+                    
+                    <li>
+                        <strong>7. Упаковка</strong><br>
+                        paczka, pudełko, puszka + родительный падеж
+                        <div class="example">Poproszę paczkę herbaty, pudełko cukru</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Предлоги -->
+            <div class="section">
+                <h2>🔗 Предлоги с родительным падежом</h2>
+                
+                <table class="endings-table">
+                    <thead>
+                        <tr>
+                            <th>Предлог</th>
+                            <th>Значение</th>
+                            <th>Примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>do</strong></td>
+                            <td>к, в (направление)</td>
+                            <td>Idę do parku, do lasu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>od</strong></td>
+                            <td>от</td>
+                            <td>od czasu do czasu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>z</strong></td>
+                            <td>из (источник)</td>
+                            <td>Jestem z Polski, sweter z wełny</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="rule-box">
+                    <strong>Наречия расстояния:</strong> blisko, daleko, niedaleko также требуют родительного падежа.
+                </div>
+            </div>
+
+            <!-- Глаголы со скрытым отрицанием -->
+            <div class="section">
+                <h2>🔍 Глаголы со скрытым отрицанием</h2>
+                
+                <ul class="category-list">
+                    <li><strong>szukać</strong> — искать (потому что не имею)</li>
+                    <li><strong>potrzebować</strong> — нуждаться (потому что не имею)</li>
+                    <li><strong>zapominać</strong> — забывать (не имею информации)</li>
+                    <li><strong>słuchać</strong> — слушать</li>
+                    <li><strong>używać</strong> — использовать</li>
+                    <li><strong>uczyć się</strong> — учиться (потому что не знаю)</li>
+                    <li><strong>boję się</strong> — бояться</li>
+                    <li><strong>życzę</strong> — желать</li>
+                </ul>
+
+                <div class="example">
+                    Słucham muzyki, Używam komputera, Uczę się polskiego, Potrzebuję czasu
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Составлено на основе урока Ani о родительном падеже в польском языке</p>
+            <p>Polski z Anią - изучайте польский с удовольствием! 🇵🇱</p>
         </div>
     </div>
 
-    <h2>📝 Окончания в родительном падеже</h2>
-    
-    <table>
-        <tr>
-            <th>Род</th>
-            <th>Прилагательное</th>
-            <th>Существительное</th>
-            <th>Примеры</th>
-        </tr>
-        <tr>
-            <td>Мужской род (одушевленный)</td>
-            <td>-ego</td>
-            <td>-a</td>
-            <td>Nie kocham młodego chłopaka</td>
-        </tr>
-        <tr>
-            <td>Мужской род (неодушевленный)</td>
-            <td>-ego</td>
-            <td>-a / -u</td>
-            <td>Nie mam nowego komputera / samochodu</td>
-        </tr>
-        <tr>
-            <td>Средний род</td>
-            <td>-ego</td>
-            <td>-a</td>
-            <td>Nie piję czerwonego wina</td>
-        </tr>
-        <tr>
-            <td>Женский род</td>
-            <td>-ej</td>
-            <td>-y / -i</td>
-            <td>Nie znam brutalnej lekarki / nauczycielki</td>
-        </tr>
-    </table>
-    
-    <div class="rule">
-        <strong>Правило для женского рода:</strong> После букв k, g, j, l используется окончание -i, после остальных букв -y.
-    </div>
-
-    <h2>🔄 Когда -a, а когда -u?</h2>
-    
-    <div class="section">
-        <h3>Окончание -u используется с:</h3>
-        <ul>
-            <li><strong>Транспорт:</strong> samochodu, roweru, samolotu</li>
-            <li><strong>Абстракции:</strong> czasu, pomysłu</li>
-            <li><strong>Собирательные существительные:</strong> ryżu, makaronu</li>
-            <li><strong>Места с группами объектов:</strong> parku, lasu</li>
-            <li><strong>Жидкости:</strong> majonezu, keczupu, żurku</li>
-            <li><strong>Дни недели (мужского рода):</strong> poniedziałku, wtorku, piątku, czwartku</li>
-        </ul>
-        
-        <h3>Окончание -a используется с:</h3>
-        <ul>
-            <li><strong>Месяцы:</strong> stycznia, września, maja</li>
-            <li><strong>Спорт и танцы:</strong> tenisa, brydża, golfa, walca</li>
-            <li><strong>Фрукты и овощи:</strong> ogórka, banana, pomidora</li>
-            <li><strong>Кухонная утварь:</strong> noża, widelca, kubka, garnka</li>
-            <li><strong>Валюта:</strong> funta, dolara, jena</li>
-            <li><strong>Марки автомобилей:</strong> golfa, mercedesa, citroena</li>
-        </ul>
-    </div>
-
-    <h2>⚙️ Функции родительного падежа</h2>
-    
-    <div class="section">
-        <ol>
-            <li>
-                <strong>Отрицание</strong><br>
-                Nie kocham, nie lubię, nie mam, nie znam<br>
-                <em>Nie lubię zimnego mleka</em>
-            </li>
-            <li>
-                <strong>Скрытое отрицание</strong><br>
-                szukam (ищу, потому что не имею), boję się (боюсь чего-то плохого), życzę (желаю то, чего у тебя нет)<br>
-                <em>Szukam książki, Boję się psa, Życzę ci szczęścia</em>
-            </li>
-            <li>
-                <strong>Принадлежность</strong><br>
-                Когда что-то кому-то принадлежит<br>
-                <em>To jest marker Ani, To jest tablica nauczycielki</em>
-            </li>
-            <li>
-                <strong>Даты</strong><br>
-                Конкретные даты<br>
-                <em>Urodziłam się drugiego października, Mamy szóstego czerwca</em>
-            </li>
-            <li>
-                <strong>Количество</strong><br>
-                С числительными от 5 до 21, со словами mało, trochę, dużo<br>
-                <em>Mam pięć lat, Mam mało cukru, Mam dużo wody</em>
-            </li>
-            <li>
-                <strong>Части целого</strong><br>
-                kawałek, część, połowa + родительный падеж<br>
-                <em>Poproszę kawałek pizzy</em>
-            </li>
-            <li>
-                <strong>Упаковка</strong><br>
-                paczka, pudełko, puszka + родительный падеж<br>
-                <em>Poproszę paczkę herbaty, pudełko cukru</em>
-            </li>
-        </ol>
-    </div>
-
-    <h2>🔗 Предлоги с родительным падежом</h2>
-    
-    <table>
-        <tr>
-            <th>Предлог</th>
-            <th>Значение</th>
-            <th>Примеры</th>
-        </tr>
-        <tr>
-            <td>do</td>
-            <td>к, в (направление)</td>
-            <td>Idę do parku, do lasu</td>
-        </tr>
-        <tr>
-            <td>od</td>
-            <td>от</td>
-            <td>od czasu do czasu</td>
-        </tr>
-        <tr>
-            <td>z</td>
-            <td>из (источник)</td>
-            <td>Jestem z Polski, sweter z wełny</td>
-        </tr>
-    </table>
-    
-    <div class="rule">
-        Наречия расстояния: <strong>blisko, daleko, niedaleko</strong> также требуют родительного падежа.
-    </div>
-
-    <h2>🔍 Глаголы со скрытым отрицанием</h2>
-    
-    <div class="section">
-        <ul>
-            <li><strong>szukać</strong> — искать (потому что не имею)</li>
-            <li><strong>potrzebować</strong> — нуждаться (потому что не имею)</li>
-            <li><strong>zapominać</strong> — забывать (не имею информации)</li>
-            <li><strong>słuchać</strong> — слушать</li>
-            <li><strong>używać</strong> — использовать</li>
-            <li><strong>uczyć się</strong> — учиться (потому что не знаю)</li>
-            <li><strong>boję się</strong> — бояться</li>
-            <li><strong>życzę</strong> — желать</li>
-        </ul>
-        
-        <div class="examples">
-            <strong>Примеры:</strong><br>
-            Słucham muzyki, Używam komputera, Uczę się polskiego, Potrzebuję czasu
-        </div>
-    </div>
-
-    <footer>
-        Составлено на основе лекций преподавателя pablo 1999
-    </footer>
+    <script>
+        // Добавляем функциональность для печати в PDF
+        window.onload = function() {
+            // Автоматически открываем диалог печати для сохранения в PDF
+            setTimeout(() => {
+                window.print();
+            }, 1000);
+        };
+    </script>
 </body>
 </html>
